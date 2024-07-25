@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "abbeville"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.32.3"
+playwright = "^1.45.1"
+pyproj = "^3.6.1"
+Jinja2 = "^3.1.4"
+Wikipedia-API = "^0.6.0"
+wptools = "^0.4.17"
+pillow = "^10.4.0"
+
+[tool.poetry.dev-dependencies]
+ruff = "^0.5.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

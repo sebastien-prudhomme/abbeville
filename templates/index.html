@@ -1,0 +1,271 @@
+<head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wdth,wght@75,100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap');
+
+    :root {
+        --card-bleeding: 1;
+        --card-width: 792px;
+        --card-height: 519px;
+        --card-bleeding-margin: 36px;
+        --card-margin: 34px;
+        --main-color: #1c2da3;
+        --opposite-color: #ffffff;
+        --large-radius: 26px;
+        --large-width: 12px;
+        --large-gap: 26px;
+        --small-radius: 9px;
+        --small-width: 3px;
+        --small-gap: 7px;
+        --font-family: "Noto Sans Display", "Noto Sans Symbols 2";
+        --font-weight: 600;
+        --font-weight-departement: 400;
+        --font-stretch: 75%;
+        --font-size-large: 96px;
+        --font-size-small: 50px;
+        --font-size-ville: 32px;
+        --font-size-departement: 32px;
+        --line-height: 1.2;
+        --infos-width: 440px;
+        --coord-height: 86px;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .back {
+        width: calc(var(--card-width) + 2 * var(--card-bleeding) * var(--card-bleeding-margin));
+        height: calc(var(--card-height) + 2 * var(--card-bleeding) * var(--card-bleeding-margin));
+
+        box-sizing: border-box;
+        padding: calc(var(--card-margin) + var(--card-bleeding) * var(--card-bleeding-margin));
+
+        display: flex;
+
+        background-color: var(--main-color);
+    }
+
+    .back_container {
+        border-color: var(--opposite-color);
+        border-radius: var(--large-radius);
+        border-style: solid;
+        border-width: var(--large-width);
+
+        flex: auto;
+
+        color: var(--opposite-color);
+        font-family: var(--font-family);
+        font-weight: var(--font-weight);
+        font-stretch: var(--font-stretch);
+        font-size: var(--font-size-large);
+        line-height: var(--line-height);
+
+        box-sizing: border-box;
+        padding: var(--large-width);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .front {
+        width: calc(var(--card-width) + 2 * var(--card-bleeding) * var(--card-bleeding-margin));
+        height: calc(var(--card-height) + 2 * var(--card-bleeding) * var(--card-bleeding-margin));
+
+        box-sizing: border-box;
+        padding: calc(var(--card-margin) + var(--card-bleeding) * var(--card-bleeding-margin));
+
+        display: flex;
+        gap: var(--large-gap);
+
+        background-color: #ffffff;
+    }
+
+    .front_container_col1 {
+        width: var(--infos-width);
+
+        display: flex;
+        flex-direction: column;
+        gap: var(--small-gap);
+    }
+
+    .front_coord {
+        color: var(--opposite-color);
+        font-family: var(--font-family);
+        font-weight: var(--font-weight);
+        font-stretch: var(--font-stretch);
+        font-size: var(--font-size-small);
+        
+        box-sizing: border-box;
+        padding-left: 14px;
+
+        display: flex;
+        align-items: center;
+        gap: 28px;
+
+        height: var(--coord-height);
+
+        background-color: var(--main-color);
+        border-radius: var(--small-radius);
+    }
+
+    .front_coord_fleche {
+        width: 64px;
+        height: 64px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        line-height: 1;
+    }
+
+    .front_coord_texte {
+        width: calc((var(--infos-width) - 64px - 2 * 14px - 2 * 28px) / 2);
+        text-align: right;
+    }
+
+    .front_infos {
+        flex: auto;
+
+        box-sizing: border-box;
+        padding: 14px;
+
+        border-color: black;
+        border-radius: var(--small-radius);
+        border-style: solid;
+        border-width: var(--small-width);
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    .front_infos_ville {
+        font-family: var(--font-family);
+        font-weight: var(--font-weight);
+        font-stretch: var(--font-stretch);
+        font-size: var(--font-size-ville);
+    }
+
+    .front_infos_departement {
+        font-family: var(--font-family);
+        font-weight: var(--font-weight-departement);
+        font-stretch: var(--font-stretch);
+        font-size: var(--font-size-departement);
+    }
+
+    .front_infos_population {
+        font-family: var(--font-family);
+        font-weight: var(--font-weight-departement);
+        font-stretch: var(--font-stretch);
+        font-size: var(--font-size-departement);
+
+        flex: auto;
+        align-content: end;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .front_infos_icon {
+        width: 64px;
+        height: 64px;
+        color: red;
+    }
+
+    svg {
+         width: 100%;
+         height: 100%;
+    }
+
+    .front_infos_texte {
+        padding-left: 14px;
+    }
+
+    .front_container_col2 {
+        border-color: black;
+        border-radius: var(--small-radius);
+        border-style: solid;
+        border-width: var(--small-width);
+
+        flex: auto;
+
+        background-image: url('../templates/France_location_map-Regions_and_departements-2016.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: #c6ecff;
+
+        position: relative;
+    }
+
+    .front_carte_position {
+        position: absolute;
+
+        width: 24px;
+        height: 24px;
+
+        background-image: url('../templates/City_locator_14.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .front_carte_blason {
+        position: absolute;
+        top: 242px;
+
+        width: 252px;
+        height: calc(445px - 242px);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        box-sizing: border-box;
+        padding: 14px;
+    }
+
+    .front_carte_blason_image {
+        height: 100%;
+    }
+</style>
+</head>
+<body>
+<div class="back" id="recto">
+    <div class="back_container">
+        <div>{{ nom_ville }}</div>
+    </div>
+</div>
+<div class="front" id="verso">
+    <div class="front_container_col1">
+        <div class="front_coord">
+            <div class="front_coord_fleche">{{ "🡅" if lat_d >= 0 else "🡇" }}</div>
+            <div class="front_coord_texte">{{ lat_d | abs }}° {{ '{:02d}'.format(lat_m) }}′</div>
+            <div class="front_coord_direction">{{ "Nord" if lat_d >= 0 else "Sud" }}</div>
+        </div>
+        <div class="front_coord">
+            <div class="front_coord_fleche">{{ "🡆" if lon_d >= 0 else "🡄" }}</div>
+            <div class="front_coord_texte">{{ lon_d | abs }}° {{ '{:02d}'.format(lon_m) }}′</div>
+            <div class="front_coord_direction">{{ "Est" if lon_d >= 0 else "Ouest" }}</div>
+        </div>
+        <div class="front_infos">
+            <div class="front_infos_ville">{{ nom_ville }}</div>
+            <div class="front_infos_departement">{{ nom_departement }}</div>
+            <div class="front_infos_population">
+                <div class="front_infos_icon">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-friends"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 5m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M5 22v-5l-1 -1v-4a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4l-1 1v5" /><path d="M17 5m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M15 22v-4h-2l2 -6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1l2 6h-2v4" /></svg>
+                </div>
+                <div class="front_infos_texte">{{ population }} hab.</div>
+            </div>
+        </div>
+    </div>
+    <div class="front_container_col2">
+        <div class="front_carte_position" style="top: {{ img_y }}px; left: {{ img_x }}px;"></div>
+        <div class="front_carte_blason">
+            <img class="front_carte_blason_image" src="{{ blason_url }}"></img>
+        </div>
+    </div>
+</div>
+</body>
