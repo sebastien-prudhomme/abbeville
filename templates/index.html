@@ -241,14 +241,14 @@
 <div class="front" id="verso">
     <div class="front_container_col1">
         <div class="front_coord">
-            <div class="front_coord_fleche">{{ "🡅" if lat_d >= 0 else "🡇" }}</div>
-            <div class="front_coord_texte">{{ lat_d | abs }}° {{ '{:02d}'.format(lat_m) }}′</div>
-            <div class="front_coord_direction">{{ "Nord" if lat_d >= 0 else "Sud" }}</div>
+            <div class="front_coord_fleche">{{ "🡅" if lat_dir == "Nord" else "🡇" }}</div>
+            <div class="front_coord_texte">{{ lat_d }}° {{ '{:02d}'.format(lat_m) }}′</div>
+            <div class="front_coord_direction">{{ lat_dir }}</div>
         </div>
         <div class="front_coord">
-            <div class="front_coord_fleche">{{ "🡆" if lon_d >= 0 else "🡄" }}</div>
-            <div class="front_coord_texte">{{ lon_d | abs }}° {{ '{:02d}'.format(lon_m) }}′</div>
-            <div class="front_coord_direction">{{ "Est" if lon_d >= 0 else "Ouest" }}</div>
+            <div class="front_coord_fleche">{{ "🡆" if lon_dir == "Est" else "🡄" }}</div>
+            <div class="front_coord_texte">{{ lon_d }}° {{ '{:02d}'.format(lon_m) }}′</div>
+            <div class="front_coord_direction">{{ lon_dir }}</div>
         </div>
         <div class="front_infos">
             <div class="front_infos_ville">{{ nom_ville }}</div>

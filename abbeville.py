@@ -14,13 +14,24 @@ import requests
 printer_studio = False
 
 
-def deg_to_dms(deg):
+def deg_to_dms(deg, type):
     decimals, number = math.modf(deg)
     d = int(number)
     m = int(decimals * 60)
     s = (deg - d - m / 60) * 3600.00
 
-    return [d, abs(m), abs(s)]
+    if deg < 0:
+        if type == "lon":
+            dir = "Ouest"
+        else:
+            dir = "Sud"
+    else:
+        if type == "lon":
+            dir = "Est"
+        else:
+            dir = "Nord"
+
+    return [abs(d), abs(m), abs(s), dir]
 
 
 # transformer = Transformer.from_crs("EPSG:4326", "EPSG:3857")
@@ -82,8 +93,8 @@ def generate(nom_ville, nom_departement, population, code_insee, type_ville):
     lon = response_json["centre"]["coordinates"][0]
     lat = response_json["centre"]["coordinates"][1]
 
-    lat_d, lat_m, lat_s = deg_to_dms(lat)
-    lon_d, lon_m, lon_s = deg_to_dms(lon)
+    lat_d, lat_m, lat_s, lat_dir = deg_to_dms(lat, "lat")
+    lon_d, lon_m, lon_s, lon_dir = deg_to_dms(lon, "lon")
 
     img_x, img_y = img_x_y(lat, lon)
 
@@ -97,8 +108,10 @@ def generate(nom_ville, nom_departement, population, code_insee, type_ville):
         population=f"{int(population):,d}".replace(",", " "),
         lat_d=lat_d,
         lat_m=lat_m,
+        lat_dir=lat_dir,
         lon_d=lon_d,
         lon_m=lon_m,
+        lon_dir=lon_dir,
         img_x=img_x,
         img_y=img_y,
         blason_url=blason_url,
